@@ -155,6 +155,7 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
     private static final int DRAWER_NOTIFICATIONS = 100;
     private static final int DRAWER_BINDINGS = 101;
     private static final int DRAWER_INBOX = 102;
+    private static final int DRAWER_PICTURES = 103;
     // Loopj
 //    private static MyAsyncHttpClient mAsyncHttpClient;
     private static AsyncHttpClient mAsyncHttpClient = new AsyncHttpClient();
@@ -476,6 +477,10 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
                         Log.d(TAG, "Inbox selected");
                         mDrawerLayout.closeDrawers();
                         OpenHABMainActivity.this.openDiscoveryInbox();
+                    } else if (mDrawerItemList.get(item).getTag() == DRAWER_PICTURES){
+                        Log.d(TAG, "Pictures selected");
+                        mDrawerLayout.closeDrawers();
+                        OpenHABMainActivity.this.openPictures();
                     }
                 }
             }
@@ -745,12 +750,22 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
         }
     }
 
+    public void openPictures() {
+        if (this.pagerAdapter != null) {
+            pagerAdapter.openPictures();
+            pager.setCurrentItem(pagerAdapter.getCount() - 1);
+        }
+    }
+
+
+
     public void openBindingThingTypes(ArrayList<ThingType> thingTypes) {
         if (this.pagerAdapter != null) {
             pagerAdapter.openBindingThingTypes(thingTypes);
             pager.setCurrentItem(pagerAdapter.getCount() - 1);
         }
     }
+
 
     private void openSitemap(String sitemapUrl) {
         Log.i(TAG, "Opening sitemap at " + sitemapUrl);
@@ -1302,6 +1317,7 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
             mDrawerItemList.add(OpenHABDrawerItem.menuItem("Bindings", getResources().getDrawable(R.drawable.ic_extension_grey600_36dp), DRAWER_BINDINGS));
 //        mDrawerItemList.add(OpenHABDrawerItem.menuItem("openHAB info", getResources().getDrawable(R.drawable.ic_info_grey600_36dp)));
 //            mDrawerItemList.add(OpenHABDrawerItem.menuItem("Setup", getResources().getDrawable(R.drawable.ic_settings_grey600_36dp)));
+            mDrawerItemList.add(OpenHABDrawerItem.menuItem("Pictures", getResources().getDrawable(R.drawable.ic_extension_grey600_36dp), DRAWER_PICTURES));
         }
         mDrawerAdapter.notifyDataSetChanged();
     }

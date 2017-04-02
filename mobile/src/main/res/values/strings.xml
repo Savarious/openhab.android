@@ -7,9 +7,10 @@
     <string name="openhab_demo_url">http://demo.openhab.org:8080/</string>
     <string name="app_preferences_name">Settings</string>
     <string name="app_notifications">Notifications</string>
-    <string name="app_bindings">Bindings</string>
+    <string name="app_bindings">BindingsZoubelideck</string>
     <string name="app_bindings_supportedthings">Supported Things</string>
     <string name="app_discoveryinbox">Discovery</string>
+    <string name="app_pictures">Photos</string>
     <string name="app_discoveryinbox_deviceunnamed">Unnamed device</string>
     <string name="app_discoveryinbox_deviceaction">Select action</string>
     <string name="app_discoveryinbox_approve">Approve</string>
@@ -107,4 +108,8 @@
     <!-- drawer -->
     <string name="drawer_open">Sitemap drawer opened</string>
     <string name="drawer_close">Sitemap drawer closed</string>
+    <string name="title_activity_open_habpictures_fragment">OpenHABPicturesFragment</string>
+    <string name="title_activity_open_habpictures_adapter">OpenHABPicturesAdapter</string>
+    <string name="title_activity_open_habpicture">OpenHABPicture</string>
+    <string name="title_activity_pictures_thing_types_fragment">PicturesThingTypesFragment</string>
 </resources>

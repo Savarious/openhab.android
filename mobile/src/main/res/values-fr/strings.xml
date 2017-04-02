@@ -11,6 +11,7 @@
     <string name="app_bindings">Objets et protocoles</string>
     <string name="app_bindings_supportedthings">Objet et protocoles supportés</string>
     <string name="app_discoveryinbox">Découverte</string>
+    <string name="app_pictures">Photos</string>
     <string name="app_discoveryinbox_deviceunnamed">Objet sans nom</string>
     <string name="app_discoveryinbox_deviceaction">Sélectionner une action</string>
     <string name="app_discoveryinbox_approve">Approuver</string>
@@ -18,6 +19,7 @@
     <string name="app_discoveryinbox_delete">Supprimer</string>
     <string name="app_discoveryinbox_nothings">Pas de nouvel objet</string>
     <string name="app_discovery">Activer la découverte</string>
+
     <!-- Main menu items -->
     <string name="mainmenu_openhab_preferences">Paramètres</string>
     <string name="mainmenu_openhab_selectsitemap">Sélectionner le sitemap par défaut</string>
