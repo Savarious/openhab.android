@@ -130,7 +130,7 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
-        loadPictures();
+        loadListPictures();
     }
 
     public void onPause() {
@@ -163,7 +163,7 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
 
     public void refresh() {
         Log.d(TAG, "refresh()");
-        loadPictures();
+        loadListPictures();
     }
 
     /*@Override
@@ -178,18 +178,25 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
         }
     }*/
 
-    private void loadPictures() {
+    private void loadListPictures() {
+        mPictures.clear();
         if (mAsyncHttpClient != null) {
             startProgressIndicator();
-            mRequestHandle = mAsyncHttpClient.get(openHABBaseUrl + "rest/pictures/joli.jpg", new AsyncHttpResponseHandler() {
+            mRequestHandle = mAsyncHttpClient.get(openHABBaseUrl + "rest/pictures", new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                     stopProgressIndicator();
-                    Log.d(TAG, "Pictures request success");
-                    mPictures.clear();
-
-                    OpenHABPicture picture = new OpenHABPicture(responseBody);
-                    mPictures.add(picture);
+                    Log.d(TAG, "Picture list request success");
+                    String list_pictures = new String(responseBody);
+                    Log.d(TAG, "Pictures list : " + list_pictures);
+                    String[] separated = list_pictures.split("\n");
+                    for (String name_pic: separated)
+                    {
+                        Log.d(TAG, "Picture name : " + name_pic);
+                        loadPicture(name_pic);
+                    }
+                    //OpenHABPicture picture = new OpenHABPicture(responseBody);
+                    //mPictures.add(picture);
 
 
                     mPicturesAdapter.notifyDataSetChanged();
@@ -198,7 +205,30 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                     stopProgressIndicator();
-                    Log.d(TAG, "Pictures request failure: " + error.getMessage());
+                    Log.d(TAG, "Pictures request failure: " + statusCode);
+                }
+            });
+        }
+    }
+
+    private void loadPicture(String name)
+    {
+        if (mAsyncHttpClient != null) {
+            startProgressIndicator();
+            mRequestHandle = mAsyncHttpClient.get(openHABBaseUrl + "rest/pictures/" + name , new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    stopProgressIndicator();
+                    Log.d(TAG, "Picture request success");
+                    OpenHABPicture picture = new OpenHABPicture(responseBody);
+                    mPictures.add(picture);
+                    mPicturesAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    stopProgressIndicator();
+                    Log.d(TAG, "Picture request failure: " + statusCode);
                 }
             });
         }

@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/pictureImage"
-        android:layout_width="fill_parent"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:layout_marginTop="6dp"
-        />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <TextView
 
         android:id="@+id/pictureMessage"
@@ -20,7 +20,6 @@
         android:layout_centerVertical="true"
         android:layout_below="@+id/pictureImage"
         android:layout_height="wrap_content"
-        android:text="Salut"
         />
 
 </RelativeLayout>

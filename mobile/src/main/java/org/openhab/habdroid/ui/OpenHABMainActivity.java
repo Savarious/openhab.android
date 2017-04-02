@@ -1317,7 +1317,7 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
             mDrawerItemList.add(OpenHABDrawerItem.menuItem("Bindings", getResources().getDrawable(R.drawable.ic_extension_grey600_36dp), DRAWER_BINDINGS));
 //        mDrawerItemList.add(OpenHABDrawerItem.menuItem("openHAB info", getResources().getDrawable(R.drawable.ic_info_grey600_36dp)));
 //            mDrawerItemList.add(OpenHABDrawerItem.menuItem("Setup", getResources().getDrawable(R.drawable.ic_settings_grey600_36dp)));
-            mDrawerItemList.add(OpenHABDrawerItem.menuItem("Pictures", getResources().getDrawable(R.drawable.ic_extension_grey600_36dp), DRAWER_PICTURES));
+            mDrawerItemList.add(OpenHABDrawerItem.menuItem("Pictures", getResources().getDrawable(R.drawable.ic_pictures_grey600_36dp), DRAWER_PICTURES));
         }
         mDrawerAdapter.notifyDataSetChanged();
     }
