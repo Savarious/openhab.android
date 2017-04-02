@@ -1,3 +1,5 @@
+Lien vers le dépot d'openHab : https://github.com/ArchibaldLeMagnifique/smarthome
+
 ## Introduction
 
 openHAB Android application is a native client for openHAB. It uses REST API of openHAB to render
