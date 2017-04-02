@@ -88,6 +88,7 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
         // Inflate the layout for this fragment
         Log.i(TAG, "onCreateView");
         Log.d(TAG, "isAdded = " + isAdded());
+
         View view = inflater.inflate(R.layout.openhabpictureslist_fragment, container, false);
 
         mSwipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
@@ -129,6 +130,7 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume()");
+        loadPictures();
     }
 
     public void onPause() {
