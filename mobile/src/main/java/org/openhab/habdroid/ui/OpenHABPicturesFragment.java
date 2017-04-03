@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.app.Activity;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -101,7 +102,7 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
         // Inflate the layout for this fragment
         Log.i(TAG, "onCreateView");
         Log.d(TAG, "isAdded = " + isAdded());
-
+        Log.d(TAG, "TEST"+ openHABBaseUrl + "rest/pictures");
         View view = inflater.inflate(R.layout.openhabpictureslist_fragment, container, false);
         mSwipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
         mSwipeLayout.setOnRefreshListener(this);
@@ -110,14 +111,40 @@ public class OpenHABPicturesFragment extends  ListFragment implements SwipeRefre
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), PictureTaker.class);
                 startActivity(intent);
+                /*Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, 1888);*/
             }
-
         });
 
         return view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "JDFKBGNDFKJIBOGLDFGHBNJ");
+        super.onActivityResult(requestCode, resultCode, data);
+        if( requestCode == 1888 ) {
+            Log.d(TAG, "JDFKBGNDFKJIBOGLDFGHBNJ");
+            byte[] photo =  data.getExtras().getByteArray("data");
+            AsyncHttpClient client = new AsyncHttpClient();
+            HashMap<String, String> param = new HashMap<String, String>();
+            param.put("name", "test");
+            RequestParams params = new RequestParams(param);
+            Log.d(TAG, "TEST POST");
+            mRequestHandle = mAsyncHttpClient.post(openHABBaseUrl + "rest/pictures", params, new AsyncHttpResponseHandler() {
 
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                    Log.d(TAG, "Picture sent");
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    Log.d(TAG, "Failed sending picture");
+                }
+            });
+        }
+    }
 
    /* public void onActivityResult(int requestCode, int resultCode, Intent data) {
         /*Log.d(TAG, "JDFKBGNDFKJIBOGLDFGHBNJ TIRAN TIRAN DULE ");

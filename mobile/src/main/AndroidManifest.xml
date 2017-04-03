@@ -118,7 +118,8 @@
         <uses-feature android:name="android.hardware.camera"></uses-feature>
         <activity
             android:name=".ui.PictureTaker"
-            android:label="@string/photo" />
+            android:label="@string/photo"
+            />
 
     </application>
 
