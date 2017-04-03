@@ -202,6 +202,24 @@ public class OpenHABFragmentPagerAdapter extends FragmentStatePagerAdapter imple
         }
     }
 
+    public void takePicture() {
+        if (fragmentList.size() > 0) {
+            if (!(fragmentList.get(fragmentList.size() - 1) instanceof OpenHABPictureTaker)) {
+                removeLastFragmentIfNotWidgetList();
+                OpenHABPictureTaker fragment = OpenHABPictureTaker.newInstance(openHABBaseUrl, openHABUsername, openHABPassword);
+                fragmentList.add(fragment);
+                notifyDataSetChanged();
+            } else {
+                ((OpenHABPictureTaker) fragmentList.get(fragmentList.size() - 1)).refresh();
+            }
+        } else {
+            OpenHABPictureTaker fragment = OpenHABPictureTaker.newInstance(openHABBaseUrl, openHABUsername, openHABPassword);
+            fragmentList.add(fragment);
+            notifyDataSetChanged();
+        }
+    }
+
+
     public void openPictures() {
         if (fragmentList.size() > 0) {
             if (!(fragmentList.get(fragmentList.size() - 1) instanceof OpenHABPicturesFragment)) {
@@ -217,6 +235,10 @@ public class OpenHABFragmentPagerAdapter extends FragmentStatePagerAdapter imple
             fragmentList.add(fragment);
             notifyDataSetChanged();
         }
+    }
+
+    public void addPicture() {
+
     }
 
     public void openBindingThingTypes(ArrayList<ThingType> thingTypes) {

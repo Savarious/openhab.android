@@ -9,7 +9,10 @@
 
 package org.openhab.habdroid.ui;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -20,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.software.shell.fab.ActionButton;
 
 import org.openhab.habdroid.R;
 import org.openhab.habdroid.model.OpenHABBinding;
@@ -34,6 +39,8 @@ public class OpenHABPicturesAdapter extends ArrayAdapter<OpenHABPicture> {
     private String mOpenHABPassword;
     private String mOpenHABBaseUrl;
 
+
+
     public OpenHABPicturesAdapter(Context context, int resource, ArrayList<OpenHABPicture> objects) {
         super(context, resource, objects);
         mResource = resource;
@@ -46,14 +53,10 @@ public class OpenHABPicturesAdapter extends ArrayAdapter<OpenHABPicture> {
             convertView = LayoutInflater.from(getContext()).inflate(mResource, parent, false);
         }
         ImageView imageView = (ImageView)convertView.findViewById(R.id.pictureImage);
-        TextView textView = (TextView)convertView.findViewById(R.id.pictureMessage);
-
         imageView.setImageBitmap(picture.getPicture());
-
-        textView.setText("Taille : " +  picture.getImageWidth() + " * " + picture.getImageHeight());
-
      return convertView;
     }
+
 
     public String getOpenHABUsername() {
         return mOpenHABUsername;

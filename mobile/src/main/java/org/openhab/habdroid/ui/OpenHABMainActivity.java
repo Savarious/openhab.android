@@ -743,6 +743,13 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
         }
     }
 
+    public void takePicture() {
+        if (this.pagerAdapter != null) {
+            pagerAdapter.takePicture();
+            pager.setCurrentItem(pagerAdapter.getCount() - 1);
+        }
+    }
+
     public void openDiscoveryInbox() {
         if (this.pagerAdapter != null) {
             pagerAdapter.openDiscoveryInbox();
@@ -757,6 +764,12 @@ public class OpenHABMainActivity extends AppCompatActivity implements OnWidgetSe
         }
     }
 
+    public void addPicture() {
+        if (this.pagerAdapter != null) {
+            pagerAdapter.addPicture();
+            pager.setCurrentItem(pagerAdapter.getCount() - 1);
+        }
+    }
 
 
     public void openBindingThingTypes(ArrayList<ThingType> thingTypes) {

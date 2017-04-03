@@ -115,6 +115,10 @@
         <meta-data android:name="com.google.android.gms.analytics.globalConfigResource"
             android:resource="@xml/global_tracker" />
         -->
+        <uses-feature android:name="android.hardware.camera"></uses-feature>
+        <activity
+            android:name=".ui.PictureTaker"
+            android:label="@string/photo" />
 
     </application>
 

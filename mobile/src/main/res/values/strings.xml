@@ -112,4 +112,6 @@
     <string name="title_activity_open_habpictures_adapter">OpenHABPicturesAdapter</string>
     <string name="title_activity_open_habpicture">OpenHABPicture</string>
     <string name="title_activity_pictures_thing_types_fragment">PicturesThingTypesFragment</string>
+
+    <string name="photo">Photo</string>
 </resources>
